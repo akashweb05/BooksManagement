@@ -1,0 +1,92 @@
+#####################################################
+# ✅ BACKEND: Visual Studio / .NET / C#
+#####################################################
+
+## Ignore Visual Studio temporary files, build results, etc.
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug*/
+[Rr]elease*/
+*.log
+*.tmp
+*.tmp_proj
+*.dbmdl
+*.pdb
+*.cache
+*.vs/
+*.vssscc
+*.vspscc
+
+# Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Tools
+_ReSharper*/
+*.DotSettings.user
+_TeamCity*
+.axoCover/*
+*.dotCover
+*.ncrunch*
+*.coverage*
+*.mm.*
+*.vsix
+
+# Code analysis / Coverage
+coverage*.json
+coverage*.xml
+coverage*.info
+OpenCover/
+BenchmarkDotNet.Artifacts/
+
+# Publish & Deployment
+publish/
+*.publishproj
+*.azurePubxml
+*.pubxml
+csx/
+AppPackages/
+BundleArtifacts/
+*.appx
+*.appxbundle
+*.appxupload
+*.rptproj.bak
+ServiceFabricBackup/
+
+# Package management
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+*.nuget.*
+artifacts/
+
+# Azure Emulator
+ecf/
+rcf/
+
+# SQL files
+*.mdf
+*.ldf
+*.ndf
+
+# Xamarin / Mono / Mobile
+*.userprefs
+mono_crash.*
+*.aps
+*.xsd.cs
+*.odx.cs
+
+# Misc
+*.db
+*.pidb
+*.sv*
