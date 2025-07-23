@@ -22,9 +22,50 @@ namespace BooksManagement.Controllers
 
         // GET: api/Books
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BookList>>> GetBookList()
+        public async Task<ActionResult> GetBookList(
+    string? search = "",
+    int page = 1,
+    int pageSize = 10,
+    string sortBy = "name",
+    string sortOrder = "asc")
         {
-            return await _context.BookList.ToListAsync();
+            var query = _context.BookList.AsQueryable();
+
+            // 🔍 Search
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(b =>
+                    b.Name.Contains(search) ||
+                    b.Author.Contains(search) ||
+                    b.Description.Contains(search));
+            }
+
+            // 🔃 Sorting
+            query = sortBy.ToLower() switch
+            {
+                "name" => sortOrder == "desc" ? query.OrderByDescending(b => b.Name) : query.OrderBy(b => b.Name),
+                "author" => sortOrder == "desc" ? query.OrderByDescending(b => b.Author) : query.OrderBy(b => b.Author),
+                _ => query.OrderBy(b => b.Name)
+            };
+
+            // 📊 Total before pagination
+            var totalCount = await query.CountAsync();
+
+            // 🧮 Pagination
+            var books = await query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            // ✅ Return with metadata
+            return Ok(new
+            {
+                totalCount,
+                page,
+                pageSize,
+                totalPages = (int)Math.Ceiling(totalCount / (double)pageSize),
+                data = books
+            });
         }
 
         // GET: api/Books/5
@@ -80,9 +121,9 @@ namespace BooksManagement.Controllers
             Console.WriteLine($"Received book: {bookList.Name}, {bookList.Description}");
 
             // Validate that the incoming data is correct
-            if (bookList.Name == null || bookList.Description == null)
+            if (bookList.Name == null || bookList.Description == null || bookList.Author == null)
             {
-                return BadRequest("Name or Description is missing");
+                return BadRequest("Name, Author or Description is missing");
             }
 
             _context.BookList.Add(bookList);
