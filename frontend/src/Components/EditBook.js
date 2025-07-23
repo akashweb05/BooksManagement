@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
 function EditBook() {
-  const [book, setBook] = useState({ name: "", description: "" });
+  const [book, setBook] = useState({ name: "", description: "", author: "" });
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -33,6 +33,7 @@ function EditBook() {
       id: id, 
       name: book.name,
       description: book.description,
+      author: book.author,
     };
 
     console.log("Sending data to server:", data);
@@ -47,10 +48,6 @@ function EditBook() {
         console.error("Error updating the book:", error.response || error);
       });
   };
-
-  // if (!book.name || !book.description) {
-  //   return <div>Loading...</div>;
-  // }
 
   return (
     <div className="container mt-5">
@@ -67,6 +64,21 @@ function EditBook() {
             className="form-control"
             placeholder="Enter book name"
             value={book.name}
+            onChange={onChange}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="author" className="form-label">
+            Author
+          </label>
+          <input
+            type="text"
+            name="author"
+            id="author"
+            className="form-control"
+            placeholder="Enter book author"
+            value={book.author}
             onChange={onChange}
           />
         </div>

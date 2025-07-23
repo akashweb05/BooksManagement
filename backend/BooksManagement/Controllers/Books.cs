@@ -31,7 +31,7 @@ namespace BooksManagement.Controllers
         {
             var query = _context.BookList.AsQueryable();
 
-            // 🔍 Search
+            //Search
             if (!string.IsNullOrEmpty(search))
             {
                 query = query.Where(b =>
@@ -40,7 +40,7 @@ namespace BooksManagement.Controllers
                     b.Description.Contains(search));
             }
 
-            // 🔃 Sorting
+            //Sorting
             query = sortBy.ToLower() switch
             {
                 "name" => sortOrder == "desc" ? query.OrderByDescending(b => b.Name) : query.OrderBy(b => b.Name),
@@ -48,16 +48,16 @@ namespace BooksManagement.Controllers
                 _ => query.OrderBy(b => b.Name)
             };
 
-            // 📊 Total before pagination
+            //Total before pagination
             var totalCount = await query.CountAsync();
 
-            // 🧮 Pagination
+            //Pagination
             var books = await query
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
 
-            // ✅ Return with metadata
+            //Return with metadata
             return Ok(new
             {
                 totalCount,

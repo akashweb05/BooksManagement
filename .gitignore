@@ -90,3 +90,29 @@ mono_crash.*
 *.db
 *.pidb
 *.sv*
+
+#####################################################
+# ✅ FRONTEND: React / Node.js
+#####################################################
+
+# dependencies
+/frontend/node_modules/
+
+/frontend/.pnp
+.pnp.js
+
+# production
+/frontend/build/
+
+# misc
+/frontend/.env
+/frontend/.DS_Store
+
+# logs
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+# IDEs and tools
+/frontend/.vscode/
+/frontend/.idea/
