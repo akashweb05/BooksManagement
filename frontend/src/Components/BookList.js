@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function BookList() {
   const navigate = useNavigate();
 
-  // 📦 State
+  // State
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
@@ -15,7 +15,7 @@ function BookList() {
   const [sortBy, setSortBy] = useState("name");
   const [sortOrder, setSortOrder] = useState("asc");
 
-  // 📡 Fetch books from API
+  //  Fetch books from API
   const fetchBooks = async () => {
     try {
       const response = await axios.get("https://localhost:7128/api/Books", {
@@ -35,7 +35,7 @@ function BookList() {
     }
   };
 
-  // 🎯 Call when filters change
+  // Call when filters change
   useEffect(() => {
     fetchBooks();
   }, [search, page, sortBy, sortOrder]);
@@ -82,7 +82,7 @@ function BookList() {
     <div className="container mt-4">
       <h1 className="text-center text-success">Book List</h1>
 
-      {/* 🔍 Search */}
+      {/* Search */}
       <input
         type="text"
         placeholder="Search by name, author, or description"
@@ -94,7 +94,7 @@ function BookList() {
         }}
       />
 
-      {/* 📊 Table */}
+      {/* Table */}
       <table className="table table-striped">
         <thead className="thead-dark">
           <tr>
@@ -149,7 +149,7 @@ function BookList() {
         </tbody>
       </table>
 
-      {/*Pagination */}
+      {/* Pagination */}
       <div className="d-flex justify-content-between align-items-center">
         <button
           className="btn btn-outline-secondary"
@@ -170,8 +170,6 @@ function BookList() {
         </button>
       </div>
 
-<<<<<<< Updated upstream
-=======
       
 <div className="d-flex justify-content-center my-3">
   {/* Show first page if not on first or second */}
@@ -229,7 +227,6 @@ function BookList() {
   )}
 </div>
 
->>>>>>> Stashed changes
       {/* 🔗 Navigation */}
       <div className="mt-4">
         <Link to="/dashboard" className="btn btn-primary me-3">
