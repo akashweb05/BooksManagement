@@ -3,13 +3,13 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 function AddBook(props) {
-  const [book, setBook] = useState({ Name: "", Description: "" });
+  const [book, setBook] = useState({ Name: "", Description: "", Author: "" });
   const navigate = useNavigate();
   const apiUrl = "https://localhost:7128/api/Books";
 
   const AddNewBook = (e) => {
     e.preventDefault();
-    const data = { Name: book.Name, Description: book.Description };
+    const data = { Name: book.Name, Description: book.Description, Author: book.Author };
 
     axios
       .post(apiUrl, data)
@@ -44,6 +44,21 @@ function AddBook(props) {
             onChange={onChange}
           />
         </div>
+
+        <div className="mb-3">
+          <label htmlFor="Author" className="form-label">
+            Author
+          </label>
+          <input
+            type="text"
+            name="Author"
+            id="Author"
+            className="form-control"
+            placeholder="Enter book author"
+            value={book.Author}
+            onChange={onChange}
+          />
+          </div>  
 
         <div className="mb-3">
           <label htmlFor="Description" className="form-label">
