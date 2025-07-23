@@ -4,7 +4,7 @@ A full-stack app to manage books, with a React frontend and ASP.NET Core backend
 
 ## Features
 - Add, edit, delete, and view books  
-- Search and filter coming soon
+- Search and pagination features added
 
 ## Tech Stack
 - Frontend: React.js 
