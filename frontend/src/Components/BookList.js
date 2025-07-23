@@ -149,7 +149,7 @@ function BookList() {
         </tbody>
       </table>
 
-      {/* ⏮️ Pagination */}
+      {/*Pagination */}
       <div className="d-flex justify-content-between align-items-center">
         <button
           className="btn btn-outline-secondary"
@@ -170,6 +170,8 @@ function BookList() {
         </button>
       </div>
 
+<<<<<<< Updated upstream
+=======
       
 <div className="d-flex justify-content-center my-3">
   {/* Show first page if not on first or second */}
@@ -227,6 +229,7 @@ function BookList() {
   )}
 </div>
 
+>>>>>>> Stashed changes
       {/* 🔗 Navigation */}
       <div className="mt-4">
         <Link to="/dashboard" className="btn btn-primary me-3">
