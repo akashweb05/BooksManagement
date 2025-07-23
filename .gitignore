@@ -90,3 +90,4 @@ mono_crash.*
 *.db
 *.pidb
 *.sv*
+/frontend/node_modules
